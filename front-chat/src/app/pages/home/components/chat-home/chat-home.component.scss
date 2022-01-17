@@ -1,0 +1,44 @@
+.d-grid-container {
+  display: grid;
+  grid-template-columns: 655px 665px;
+  justify-content: center;
+  column-gap: 43px;
+  height: 956px;
+
+  div {
+    height: 100%;
+  }
+}
+
+.d-grid-menu {
+  display: grid;
+  grid-template-columns: 186px 1fr;
+  column-gap: 43px;
+
+}
+
+.menu {
+  border-radius: 20px;
+  background: #1A66FF;
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  border: 1px solid red;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  figure img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: #ffffff;
+  }
+}
+
+.card-chat {
+  border-radius: 20px;
+  background: #0D0D0D;
+}
