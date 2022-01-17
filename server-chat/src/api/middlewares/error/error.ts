@@ -1,17 +1,17 @@
-import { Response, Request, NextFunction } from "express";
-import Youch from "youch";
+import { Response, Request, NextFunction } from 'express';
+import Youch from 'youch';
 
-import AppError from "./AppError";
+import AppError from './AppError';
 
 export default async (
   err: Error,
   request: Request,
   response: Response,
-  _: NextFunction
+  _: NextFunction,
 ) => {
   if (err instanceof AppError) {
     return response.status(err.statusCode).json({
-      status: "error",
+      status: 'error',
       message: err.message,
     });
   }
@@ -22,5 +22,5 @@ export default async (
     return response.status(500).json(errors);
   }
 
-  return response.status(500).json({ message: "Ocorreu um erro" });
+  return response.status(500).json({ message: 'An error has occurred' });
 };

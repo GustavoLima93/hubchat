@@ -6,9 +6,10 @@ import UserController from '../controllers/UserController';
 const userController = new UserController();
 const userRouter = Router();
 
-userRouter.get('/', ensureAuthenticated, userController.finById);
-userRouter.post('/', userController.create);
-userRouter.put('/', ensureAuthenticated, userController.update);
-userRouter.delete('/', ensureAuthenticated, userController.delete);
+userRouter
+  .get('/', ensureAuthenticated, userController.finById)
+  .post('/', userController.create)
+  .put('/', ensureAuthenticated, userController.update)
+  .delete('/', ensureAuthenticated, userController.delete);
 
 export default userRouter;
