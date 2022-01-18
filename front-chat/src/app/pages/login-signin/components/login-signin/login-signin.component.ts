@@ -123,6 +123,7 @@ export class LoginSigninComponent implements OnInit {
           this._toastService.success('Conta criada');
           this.router.navigate(['/chat/login']);
           this.resetForm();
+          this.spinnerButton = false;
         },
         error: () => {
           this._toastService.error('Ocorreu um erro ao se autenticar');
@@ -139,6 +140,7 @@ export class LoginSigninComponent implements OnInit {
       next: (resp: IAuthFormResponse) => {
         this.utilService.setLocalStorage('token', resp.token);
         this.router.navigate(['/chat']);
+        this.spinnerButton = false;
       },
       error: () => {
         this._toastService.error('Ocorreu um erro ao se autenticar');

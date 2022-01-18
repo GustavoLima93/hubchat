@@ -41,6 +41,7 @@ export class ChatRoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.initFormRoom();
+    this.observeNewRoomSocket();
     this.getRooms();
   }
 
@@ -51,15 +52,25 @@ export class ChatRoomsComponent implements OnInit {
     });
   }
 
+  observeNewRoomSocket() {
+    this.chatService.receivedCreatedRoom()
+      .subscribe((room: IRoom) => {
+        this.rooms = [...this.rooms, room]
+        requestAnimationFrame(() => {
+          this.viewport.scrollTo({ bottom: 0, behavior: 'smooth' })
+        });
+      });
+  }
+
   getRooms() {
     this.chatService.getRooms().subscribe(
       {
         next: (resp: IRoom[]) => {
           this.rooms = [...resp];
-          this.chatService.nextChatSelected = (this.rooms[0] && {...this.rooms[0], index: 0 }) || '';
+          this.chatService.nextChatSelected = this.rooms.length ? { ...this.rooms[0], index: 0 } : { name: ''};
         },
-        error: () => {},
-        complete: () => {}
+        error: () => { },
+        complete: () => { }
       }
     );
   }
@@ -78,8 +89,9 @@ export class ChatRoomsComponent implements OnInit {
           this._toastService.success('Sala criada');
           this.modalRef?.hide();
           this.formRoom.reset();
+          this.chatService.newRoom(resp);
           requestAnimationFrame(() => {
-            this.viewport.scrollTo({bottom: 0, behavior: 'smooth'})
+            this.viewport.scrollTo({ bottom: 0, behavior: 'smooth' })
           });
 
         },
@@ -93,7 +105,8 @@ export class ChatRoomsComponent implements OnInit {
   }
 
   selectChat(item: IRoom, index: number) {
-    this.chatService.nextChatSelected = {...item, index };
+    console.log(item)
+    this.chatService.nextChatSelected = { ...item, index };
   }
 
 

@@ -20,6 +20,10 @@ class RoomService {
   public async findById(id: string): Promise<IRoom> {
     const result = await this.roomRepository.findById(id);
 
+    if (!result) {
+      throw new AppError('Room not found', 404);
+    }
+
     return result;
   }
 

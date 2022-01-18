@@ -1,8 +1,6 @@
-import AppError from '@middlewares/error/AppError';
+import SessionService from '@modules/session/services/SessionService';
 import UserService from '@modules/user/services/UserService';
-import { compare } from 'bcryptjs';
 import { Request, Response } from 'express';
-import { sign } from 'jsonwebtoken';
 import { container } from 'tsyringe';
 
 export default class SessionController {
@@ -13,32 +11,8 @@ export default class SessionController {
 
     const user = await userService.findByEmail(email);
 
-    if (!user) {
-      throw new AppError('Email or password invalid', 401);
-    }
+    const result = await SessionService.session(user, password);
 
-    const passwordCompare = await compare(password, user.password);
-
-    if (!passwordCompare) {
-      throw new AppError('Email or password invalid', 401);
-    }
-
-    const token = sign(
-      { name: user.name, email: user.email },
-      String(process.env.TOKEN),
-      {
-        subject: String(user.id),
-        expiresIn: '7d',
-      },
-    );
-
-    return response.json({
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-      },
-      token,
-    });
+    return response.json(result);
   }
 }

@@ -7,6 +7,5 @@ serverHttp.listen(process.env.PORT || 3333, () => {
     PORTA: process.env.PORT || 3333,
     STARTADO: true,
   };
-
   console.table(serverHost);
 });

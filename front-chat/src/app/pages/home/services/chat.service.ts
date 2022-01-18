@@ -78,6 +78,10 @@ export class ChatService {
     this.socket.emit('LeaveRoom', room);
   }
 
+  newRoom(room: IRoom): void {
+    this.socket.emit('CreatedRoom', room);
+  }
+
   sendMessages(message: IRoomDialog): void {
     console.log('chegou aqui send', message);
     this.socket.emit('SendMessagesRoom', message);
@@ -86,7 +90,14 @@ export class ChatService {
   receivedMessages(): Observable<IRoomDialog> {
     return new Observable(observer => {
       this.socket.on('ReceivedMessagesRoom', (data: IRoomDialog) => {
-        console.log('chegou aqui')
+        observer.next(data);
+      });
+    });
+  }
+
+  receivedCreatedRoom(): Observable<IRoom> {
+    return new Observable(observer => {
+      this.socket.on('CreatedRoom', (data: IRoom) => {
         observer.next(data);
       });
     });

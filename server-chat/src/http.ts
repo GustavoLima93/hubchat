@@ -4,6 +4,7 @@ import 'express-async-errors';
 import './api/shared/container';
 import './api/database';
 
+import { errors } from 'celebrate';
 import cors from 'cors';
 import express from 'express';
 import RateLimit from 'express-rate-limit';
@@ -31,6 +32,7 @@ app.use(limiter);
 
 app.use('/api/v1', routes);
 
+app.use(errors());
 app.use(middlewareError);
 
 const serverHttp = http.createServer(app);
