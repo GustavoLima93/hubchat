@@ -4,5 +4,5 @@ export default interface IRoom {
   id?: string;
   name: string;
   owner: ObjectId;
-  users: ObjectId[];
+  description: string;
 }

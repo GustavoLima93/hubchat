@@ -28,6 +28,8 @@ export default class RoomDialogController {
 
     await roomDialogService.create(roomDialog);
 
-    return response.sendStatus(201);
+    return response
+      .status(201)
+      .json({ status: 'Created', timestemp: new Date() });
   }
 }

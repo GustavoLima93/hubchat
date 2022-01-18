@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-chat-home',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatHomeComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild(CdkVirtualScrollViewport)
+  public viewport: CdkVirtualScrollViewport;
+
+  public arr = new Array(5)
+
+
+
+  constructor() {}
 
   ngOnInit(): void {
+
+  }
+
+  teste() {
+    this.arr = [...this.arr, 1]
+    requestAnimationFrame(() => {
+      //this.viewport.scrollToIndex(this.arr.length + 1 , 'smooth');
+      this.viewport.scrollTo({bottom: 0, behavior: 'smooth'})
+    });
   }
 
 }

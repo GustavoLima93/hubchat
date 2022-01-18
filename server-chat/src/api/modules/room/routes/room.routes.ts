@@ -7,6 +7,7 @@ const roomController = new RoomController();
 const roomRouter = Router();
 
 roomRouter
+  .get('/', ensureAuthenticated, roomController.find)
   .get('/:id', ensureAuthenticated, roomController.finById)
   .post('/', ensureAuthenticated, roomController.create)
   .put('/:id', ensureAuthenticated, roomController.update)

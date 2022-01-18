@@ -1,0 +1,182 @@
+
+.card-chat-body {
+  cursor: pointer;
+  padding-right: 10px;
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+.card-chat-body + .card-chat-body {
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.card-chat-group-container {
+  width: 100%;
+  height: 817px;
+  overflow: auto;
+}
+
+.card-chat-group {
+  display: flex;
+  padding: 15px 0;
+}
+
+.card-chat-header h2 {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
+}
+
+.avatar-group {
+  margin-right: 15px;
+
+  figure {
+    margin: 0;
+
+    img {
+      height: 70px;
+      width: 70px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+  }
+}
+
+.card-chat-group-name {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin-top: 8px;
+}
+
+.card-chat-group-message {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+  max-width: 180px;
+}
+
+.card-chat-group-date {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+  margin-left: auto;
+  margin-top: 8px;
+}
+
+.btn-group {
+  width: 100%;
+  height: 45px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 5px;
+  text-transform: uppercase;
+  border: none;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.submit-btn {
+
+    background: #1A66FF;
+    color: #ffffff;
+    margin-top: 20px;
+  }
+
+  &:hover {
+    opacity: 0.4;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.modal-bg {
+  padding: 30px 0 50px 0;
+  background: #0d0d0d;
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+
+  label {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+  }
+
+  input {
+    height: 45px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    background: #212121;
+    color: #ffffff;
+  }
+
+  button {
+    width: 75px;
+    height: 45px;
+    border: none;
+    background: #1A66FF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: 20px;
+
+    &:hover {
+      opacity: 0.4;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  .flex-btn {
+    min-width: 75px !important;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    button {
+      margin-left: 20px;
+    }
+  }
+
+  .closed-btn {
+    border: none;
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    border-radius: 50%;
+    color: #000000;
+    position: absolute;
+    top: -36px;
+    right: 0;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+  }
+
+
+}

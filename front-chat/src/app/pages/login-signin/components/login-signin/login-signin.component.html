@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="container-form">
+    <div class="login-logo" [style.top]="action === 'signin' ? '20px' : '125px'">
+      <img src="../../../../../assets/img/chat-vector.svg" width="120" height="120" alt="">
+    </div>
+    <div class="card-form">
+      <form [formGroup]="form">
+        <div class="mt-3 mb-3" *ngIf="action === 'signin'">
+          <label for="name" class="form-label">Nome</label>
+          <input [class.is-invalid]='name.invalid && (name.dirty || name.touched)' formControlName="name" type="name" class="form-control " id="name" placeholder="Digite seu nome">
+          <div id="validationNameFeedback" class="invalid-feedback">
+            Campo nome é obrigatório
+          </div>
+        </div>
+        <div class="mt-3 mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input [class.is-invalid]='email.invalid && (email.dirty || email.touched)' formControlName="email" type="text" class="form-control" id="email" placeholder="email@email.com">
+          <div id="validationEmailFeedback" class="invalid-feedback">
+            Campo email é obrigatório e tem que ser um email válido
+          </div>
+        </div>
+        <div class="mt-3 mb-3">
+          <label for="password" class="form-label">Senha</label>
+          <input [class.is-invalid]='password.invalid && (password.dirty || password.touched)' formControlName="password" type="password" class="form-control " id="password" placeholder="password">
+          <div id="validationPasswordFeedback" class="invalid-feedback">
+            Campo senha é obrigatório
+          </div>
+        </div>
+        <div class="mt-3 mb-3" *ngIf="action === 'signin'">
+          <label for="confirmPassword" class="form-label">Confirmar Senha</label>
+          <input [class.is-invalid]='confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)' formControlName="confirmPassword" type="password" class="form-control " id="confirmPassword" placeholder="Confirmar password">
+          <div id="validationConfirmPasswordFeedback" class="invalid-feedback">
+            Campo confirmar senha é obrigatório
+          </div>
+          <div *ngIf="confirmDiffPassword"  class="text-danger mt-2">
+            Confirmação de senha diferente da senha
+          </div>
+        </div>
+        <div>
+          <button (click)="submitForm()" [disabled]="form.invalid || spinnerButton" type="submit" class="submit-btn">
+            {{ action === 'signin' ? 'sign in' : 'login' }}
+            <div *ngIf="spinnerButton" class="spinner-border text-light fix-spinner" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </button>
+        </div>
+        <div>
+          <button (click)="navigation()" type="button" class="route-btn">{{ action !== 'signin' ? 'sign in' : 'login' }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

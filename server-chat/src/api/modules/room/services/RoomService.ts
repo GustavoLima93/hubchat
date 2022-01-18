@@ -11,18 +11,25 @@ class RoomService {
     private roomRepository: IRoomRepository,
   ) {}
 
+  public async find(page: number, limit: number): Promise<IRoom[]> {
+    const result = await this.roomRepository.find(page, limit);
+
+    return result;
+  }
+
   public async findById(id: string): Promise<IRoom> {
     const result = await this.roomRepository.findById(id);
 
     return result;
   }
 
-  public async create(room: IRoom): Promise<void> {
-    await this.roomRepository.create(room);
+  public async create(room: IRoom): Promise<IRoom> {
+    const result = await this.roomRepository.create(room);
+    return result;
   }
 
   public async update(
-    { name, owner, users }: IRoom,
+    { name, owner, description }: IRoom,
     id: string,
   ): Promise<void> {
     const room = await this.roomRepository.findById(id);
@@ -38,7 +45,7 @@ class RoomService {
     const roomUpdate = {
       ...(owner && { owner }),
       ...(name && { name }),
-      ...(users && { users }),
+      ...(description && { description }),
     };
 
     await this.roomRepository.update(roomUpdate, id);

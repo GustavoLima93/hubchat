@@ -1,0 +1,42 @@
+<div class="card-chat">
+  <div>
+    <div class="card-chat-dialog-header">
+      <div class="avatar-dialog">
+        <figure>
+          <img src="https://avatars.dicebear.com/api/big-smile/guh.svg" alt="" srcset="">
+        </figure>
+      </div>
+      <div>
+        <div class="card-chat-dialog-name">
+          Reunião de amigos
+        </div>
+        <div class="card-chat-dialog-message">
+          Online
+        </div>
+      </div>
+    </div>
+    <cdk-virtual-scroll-viewport appendOnly [itemSize]="arr.length" class="card-chat-dialog-body">
+
+      <div class="imessage">
+        <ng-container *cdkVirtualFor="let item of arr">
+          <div>
+            <p class="from-them">teste novo teste {{item}}</p>
+            <small>Gustavo - ontem, 5:24pm</small>
+          </div>
+          <div class="fix-from-me">
+            <p class="from-me">Like is this an earthquake just go back to sleep</p>
+            <small class="text-end">Gustavo - ontem, 5:24pm</small>
+          </div>
+        </ng-container>
+      </div>
+    </cdk-virtual-scroll-viewport>
+    <div class="card-chat-dialog-footer">
+      <div class="send-message">
+        <input type="text" name="" id="">
+        <button (click)="teste()" type="submit">
+          <img src="../../../../../assets/img/send-message.svg" alt="">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

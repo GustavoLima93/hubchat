@@ -1,0 +1,64 @@
+<div class="card-chat">
+  <div class="card-chat-header">
+    <h2>Salas</h2>
+  </div>
+
+    <cdk-virtual-scroll-viewport  appendOnly [itemSize]="rooms?.length" class="card-chat-group-container">
+      <div class="card-chat-body" *cdkVirtualFor="let item of rooms; let i = index">
+        <div class="card-chat-group" (click)="selectChat(item)">
+          <div class="avatar-group">
+            <figure>
+              <img [src]="'https://avatars.dicebear.com/api/big-smile/'+ i + '.svg'" alt="" srcset="">
+            </figure>
+          </div>
+          <div class="card-chat-group-descriptions">
+            <div class="card-chat-group-name">
+              {{ item.name }}
+            </div>
+            <div class="card-chat-group-message">
+              {{ item.description }}
+            </div>
+          </div>
+          <div class="card-chat-group-date">
+            {{ item.createdAt | date: 'dd/MM/yyyy hh:mm' }}
+          </div>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+
+  <button (click)="openModalCreateGroup(template)" type="submit" class="btn-group submit-btn">
+    Criar sala
+  </button>
+</div>
+
+<ng-template #template>
+  <div class="row modal-bg">
+    <form [formGroup]="formRoom">
+      <div class="col-12">
+        <label for="nameRoom" class="form-label">Nome da sala</label>
+        <input formControlName="name" [class.is-invalid]='name.invalid && (name.dirty || name.touched)' id="nameRoom"
+          type="text" class="form-control" placeholder="Ex: Reunião da faculdade" aria-label="nameRoom">
+        <div id="validationNameRoomFeedback" class="invalid-feedback">
+          Campo nome é obrigatório
+        </div>
+      </div>
+      <div class="col-12 mt-5">
+        <label for="descriptionRoom" class="form-label">Descrição</label>
+        <input formControlName="description" id="descriptionRoom" type="text" class="form-control"
+          placeholder="Ex: Ex alunos impacta pós EF" aria-label="descriptionRoom">
+      </div>
+      <div class="col-12 flex-btn">
+        <div class="mr-3" *ngIf="spinnerButton">
+          <div  class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <button (click)="createRoom()"  type="submit" [disabled]="formRoom.invalid || spinnerButton">
+          Criar
+        </button>
+      </div>
+      <button class="closed-btn" (click)="modalRef?.hide()">x</button>
+    </form>
+  </div>
+
+</ng-template>

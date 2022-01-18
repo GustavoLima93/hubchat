@@ -10,15 +10,13 @@ const RoomSchema = new Schema<IRoom>(
     },
     owner: {
       type: Schema.Types.ObjectId,
-      ref: 'users',
+      ref: 'User',
       required: true,
     },
-    users: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-      },
-    ],
+    description: {
+      type: String,
+      requerid: true,
+    },
   },
   {
     timestamps: true,

@@ -1,0 +1,218 @@
+/** Dialog */
+
+.card-chat-dialog-header {
+  display: flex;
+  padding: 15px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+}
+
+.avatar-dialog {
+  margin-right: 35px;
+
+  figure {
+    margin: 0;
+
+    img {
+      height: 75px;
+      width: 75px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+  }
+}
+
+.card-chat-dialog-name {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+.card-chat-dialog-message {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-chat-dialog-body {
+  width: 100%;
+  height: 700px;
+  overflow: auto;
+
+}
+
+.card-chat-dialog-footer {
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 35px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.send-message {
+  display: flex;
+  justify-content: space-between;
+
+  input {
+    outline: 0;
+    height: 45px;
+    width: 537px;
+    padding: 5px;
+    background: #212121;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+  }
+
+  button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: #1A66FF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+
+}
+
+/** css imessage */
+
+.imessage {
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  margin: 0 auto 1rem;
+  max-width: 600px;
+  padding: 0.5rem 1.5rem;
+
+  small {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.imessage p {
+  border-radius: 1.15rem;
+  line-height: 1.25;
+  max-width: 75%;
+  padding: 0.5rem 0.875rem;
+  position: relative;
+  word-wrap: break-word;
+
+
+}
+
+.imessage p::before,
+.imessage p::after {
+  bottom: -0.1rem;
+  content: "";
+  height: 13px;
+  position: absolute;
+}
+
+p.from-me {
+  align-self: flex-end;
+  background-color: #1a66ff;
+  color: #ffffff;
+}
+
+p.from-me::before {
+  border-bottom-left-radius: 0.8rem 0.7rem;
+  border-top-right-radius: 0.8rem 0.7rem;
+  border-right: 1rem solid #1a66ff;
+  right: 3px;
+  transform: translate(0, -0.1rem);
+}
+
+p.from-me::after {
+  border-bottom-left-radius: 0.5rem;
+
+  right: -40px;
+  transform: translate(-30px, -2px);
+  width: 10px;
+}
+
+p[class^="from-"] {
+  margin: 0.5rem 0;
+  width: fit-content;
+}
+
+p.from-me ~ p.from-me {
+  margin: 0.25rem 0 0;
+}
+
+p.from-me ~ p.from-me:not(:last-child) {
+  margin: 0.25rem 0 0;
+}
+
+p.from-me ~ p.from-me:last-child {
+  margin-bottom: 0.5rem;
+}
+
+p.from-them {
+  align-items: flex-start;
+  background-color: #1b1b1b;
+  color: #ffffff;
+}
+
+p.from-them:before {
+  border-bottom-right-radius: 0.8rem 0.7rem;
+  border-top-left-radius: 0.8rem 0.7rem;
+  border-left: 1rem solid #1b1b1b;
+  left: 2px;
+  transform: translate(0, -0.1rem);
+}
+
+p.from-them::after {
+  border-bottom-right-radius: 0.5rem;
+  left: 20px;
+  transform: translate(-30px, -2px);
+  width: 10px;
+}
+
+p[class^="from-"].emoji {
+  background: none;
+  font-size: 2.5rem;
+}
+
+p[class^="from-"].emoji::before {
+  content: none;
+}
+
+.no-tail::before {
+  display: none;
+}
+
+.margin-b_none {
+  margin-bottom: 0 !important;
+}
+
+.margin-b_one {
+  margin-bottom: 1rem !important;
+}
+
+.margin-t_one {
+  margin-top: 1rem !important;
+}
+
+.fix-from-me {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+}

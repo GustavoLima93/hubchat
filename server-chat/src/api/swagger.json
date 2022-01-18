@@ -9,7 +9,7 @@
     }
   },
   "paths": {
-    "/user": {
+    "/api/v1/user": {
       "get": {
         "tags": [
           "User"
@@ -136,7 +136,54 @@
         }
       }
     },
-    "/room": {
+    "/api/v1/room": {
+      "get": {
+        "tags": [
+          "Room"
+        ],
+        "summary": "Get a room",
+        "description": "Get rooms in the server",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Pagination",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit pagination",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/definitions/Room"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An error has occurred"
+          }
+        }
+      },
       "post": {
         "tags": [
           "Room"
@@ -167,7 +214,7 @@
         }
       }
     },
-    "/room/{id}": {
+    "/api/v1/room/{id}": {
       "get": {
         "tags": [
           "Room"
@@ -274,7 +321,7 @@
         }
       }
     },
-    "/room-dialog": {
+    "/api/v1/room-dialog": {
       "get": {
         "tags": [
           "RoomDialog"
@@ -359,7 +406,7 @@
         }
       }
     },
-    "/session": {
+    "/api/v1/session": {
       "post": {
         "tags": [
           "Session"
@@ -408,11 +455,8 @@
         "owner": {
           "type": "string"
         },
-        "users": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "description": {
+          "type": "string"
         }
       }
     },

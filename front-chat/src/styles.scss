@@ -9,9 +9,25 @@
 /* Importing Normalize SCSS file. */
 @import "node_modules/normalize.css/normalize";
 
+/* Importing Google fonts SCSS file. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 
 .container {
   max-width: 1385px;
   margin: 0 auto;
   padding: 10px;
+}
+
+.card-chat {
+  padding: 20px;
+  border-radius: 20px;
+  background: #0d0d0d;
+}
+
+
+
+.modal-content {
+  border-radius: 20px;
+  background: #0d0d0d;
 }

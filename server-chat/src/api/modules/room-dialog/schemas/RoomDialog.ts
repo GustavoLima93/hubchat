@@ -10,12 +10,12 @@ const RoomDialogSchema = new Schema<IRoomDialog>(
     },
     ownerId: {
       type: Schema.Types.ObjectId,
-      ref: 'users',
+      ref: 'User',
       required: true,
     },
     roomId: {
       type: Schema.Types.ObjectId,
-      ref: 'rooms',
+      ref: 'Room',
       required: true,
     },
   },

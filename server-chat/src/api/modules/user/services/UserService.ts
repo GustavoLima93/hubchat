@@ -14,13 +14,12 @@ class UserService {
 
   public async findByEmail(email: string): Promise<IUser> {
     const result = await this.userRepository.findByEmail(email);
-
     return result;
   }
 
   public async findById(id: string): Promise<IUser> {
     const result = await this.userRepository.findById(id);
-
+    delete result.password;
     return result;
   }
 

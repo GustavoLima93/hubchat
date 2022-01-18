@@ -20,7 +20,8 @@ class RoomDialogRepository implements IRoomDialogRepository {
       .find({ roomId })
       .limit(limit)
       .skip((page - 1) * limit)
-      .sort('createdAt');
+      .sort({ createdAt: -1 })
+      .populate({ path: 'ownerId', select: ['name', 'email'] });
 
     return result;
   }

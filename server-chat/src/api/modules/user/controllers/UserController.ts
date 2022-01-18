@@ -21,7 +21,9 @@ export default class UserController {
 
     await userService.create(form);
 
-    return response.sendStatus(201);
+    return response
+      .status(201)
+      .json({ status: 'Created', timestemp: new Date() });
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
@@ -31,7 +33,9 @@ export default class UserController {
 
     await userService.update(form, request.user.id);
 
-    return response.send();
+    return response
+      .status(200)
+      .json({ status: 'Updated', timestemp: new Date() });
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
@@ -39,6 +43,8 @@ export default class UserController {
 
     await userService.delete(request.user.id);
 
-    return response.send();
+    return response
+      .status(200)
+      .json({ status: 'Deleted', timestemp: new Date() });
   }
 }

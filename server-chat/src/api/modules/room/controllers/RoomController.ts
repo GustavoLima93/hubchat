@@ -5,6 +5,16 @@ import { container } from 'tsyringe';
 import IRoom from '../schemas/interfaces/IRoom';
 
 export default class RoomController {
+  public async find(request: Request, response: Response): Promise<Response> {
+    const { page, limit } = request.query;
+
+    const roomService = container.resolve(RoomService);
+
+    const room = await roomService.find(Number(page), Number(limit));
+
+    return response.json(room);
+  }
+
   public async finById(
     request: Request,
     response: Response,
@@ -25,9 +35,9 @@ export default class RoomController {
 
     const roomService = container.resolve(RoomService);
 
-    await roomService.create(room);
+    const result = await roomService.create(room);
 
-    return response.sendStatus(201);
+    return response.status(201).json(result);
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
@@ -40,7 +50,9 @@ export default class RoomController {
 
     await roomService.update(room, id);
 
-    return response.send();
+    return response
+      .status(200)
+      .json({ status: 'Updated', timestemp: new Date() });
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
@@ -49,6 +61,8 @@ export default class RoomController {
 
     await roomService.delete(id, request.user.id);
 
-    return response.send();
+    return response
+      .status(200)
+      .json({ status: 'Deleted', timestemp: new Date() });
   }
 }

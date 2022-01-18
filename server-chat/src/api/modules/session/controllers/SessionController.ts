@@ -35,7 +35,7 @@ export default class SessionController {
     return response.json({
       user: {
         id: user.id,
-        nome: user.name,
+        name: user.name,
         email: user.email,
       },
       token,
