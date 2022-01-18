@@ -16,7 +16,7 @@ class RoomDialogService {
     roomId: string,
   ): Promise<IRoomDialog[]> {
     const result = await this.roomRepository.find(page, limit, roomId);
-    return result;
+    return result.reverse();
   }
 
   public async create(roomDialog: IRoomDialog): Promise<void> {

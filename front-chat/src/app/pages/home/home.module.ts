@@ -6,7 +6,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeRoutingModule } from './home-routing.module';
 import { ChatHomeComponent } from './components/chat-home/chat-home.component';
 import { CoreModule } from 'src/app/core/core.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChatRoomsComponent } from './components/chat-rooms/chat-rooms.component';
 import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.component';
 
@@ -22,7 +22,8 @@ import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.compon
     CoreModule,
     ScrollingModule,
     ModalModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

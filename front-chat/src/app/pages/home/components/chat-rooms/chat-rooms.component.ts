@@ -55,9 +55,8 @@ export class ChatRoomsComponent implements OnInit {
     this.chatService.getRooms().subscribe(
       {
         next: (resp: IRoom[]) => {
-          console.log(resp)
           this.rooms = [...resp];
-          console.log()
+          this.chatService.nextChatSelected = (this.rooms[0] && {...this.rooms[0], index: 0 }) || '';
         },
         error: () => {},
         complete: () => {}
@@ -93,8 +92,8 @@ export class ChatRoomsComponent implements OnInit {
     );
   }
 
-  selectChat(item: IRoom) {
-    this.chatService.nextChatSelected = item;
+  selectChat(item: IRoom, index: number) {
+    this.chatService.nextChatSelected = {...item, index };
   }
 
 

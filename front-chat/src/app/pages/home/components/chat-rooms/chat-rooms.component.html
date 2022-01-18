@@ -5,7 +5,7 @@
 
     <cdk-virtual-scroll-viewport  appendOnly [itemSize]="rooms?.length" class="card-chat-group-container">
       <div class="card-chat-body" *cdkVirtualFor="let item of rooms; let i = index">
-        <div class="card-chat-group" (click)="selectChat(item)">
+        <div class="card-chat-group" (click)="selectChat(item, i)">
           <div class="avatar-group">
             <figure>
               <img [src]="'https://avatars.dicebear.com/api/big-smile/'+ i + '.svg'" alt="" srcset="">

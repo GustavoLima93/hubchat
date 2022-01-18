@@ -3,37 +3,48 @@
     <div class="card-chat-dialog-header">
       <div class="avatar-dialog">
         <figure>
-          <img src="https://avatars.dicebear.com/api/big-smile/guh.svg" alt="" srcset="">
+          <img [src]="'https://avatars.dicebear.com/api/big-smile/'+ roomSelected?.index  + '.svg'" alt="" srcset="">
         </figure>
       </div>
       <div>
         <div class="card-chat-dialog-name">
-          Reunião de amigos
+          {{ roomSelected?.name }}
         </div>
         <div class="card-chat-dialog-message">
           Online
         </div>
       </div>
     </div>
-    <cdk-virtual-scroll-viewport appendOnly [itemSize]="arr.length" class="card-chat-dialog-body">
-
+    <cdk-virtual-scroll-viewport appendOnly [itemSize]="messages?.length" class="card-chat-dialog-body">
       <div class="imessage">
-        <ng-container *cdkVirtualFor="let item of arr">
-          <div>
-            <p class="from-them">teste novo teste {{item}}</p>
-            <small>Gustavo - ontem, 5:24pm</small>
+        <ng-container *cdkVirtualFor="let item of messages">
+          <div *ngIf="item.ownerId._id !== owner._id">
+            <p class="from-them">{{ item.message }}</p>
+            <small>{{ item.ownerId.name }} - {{ item.createdAt | date: 'dd/MM/yyyy hh:mm' }} </small>
           </div>
-          <div class="fix-from-me">
-            <p class="from-me">Like is this an earthquake just go back to sleep</p>
-            <small class="text-end">Gustavo - ontem, 5:24pm</small>
+          <div class="fix-from-me" *ngIf="item.ownerId._id === owner._id">
+            <p class="from-me">{{ item.message }}</p>
+            <small class="text-end fix-response-status">{{ item.ownerId.name }} - {{ item.createdAt | date: 'dd/MM/yyyy hh:mm' }}
+              <div *ngIf="item?.status === 'progress'">
+                <i  class="fas fa-circle-notch fa-spin"></i>
+              </div>
+
+              <div *ngIf="item?.status === 'success'">
+                <i  class="fas fa-check-double"></i>
+              </div>
+
+              <div *ngIf="item?.status === 'error'">
+                <i  class="fas fa-exclamation-circle"></i>
+              </div>
+            </small>
           </div>
         </ng-container>
       </div>
     </cdk-virtual-scroll-viewport>
     <div class="card-chat-dialog-footer">
       <div class="send-message">
-        <input type="text" name="" id="">
-        <button (click)="teste()" type="submit">
+        <input #inputSendMessage type="text" name="" id="" (keyup.enter)="sendMessage(inputSendMessage)">
+        <button (click)="sendMessage(inputSendMessage)"   type="submit">
           <img src="../../../../../assets/img/send-message.svg" alt="">
         </button>
       </div>

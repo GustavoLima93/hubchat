@@ -1,7 +1,8 @@
 export default interface IRoom {
-  id?: string;
+  _id?: string;
   name: string;
   owner?: string;
   description?: string;
   createdAt: Date;
+  index?: number;
 }

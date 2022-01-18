@@ -89,6 +89,7 @@
 
 }
 
+
 /** css imessage */
 
 .imessage {
@@ -215,4 +216,13 @@ p[class^="from-"].emoji::before {
   flex-direction: column;
   justify-content: flex-end;
   width: 100%;
+}
+
+.fix-response-status {
+  display: flex;
+  justify-content: flex-end;
+
+  svg {
+    margin-left: 3px;
+  }
 }
