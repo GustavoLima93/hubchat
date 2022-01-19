@@ -5,4 +5,5 @@ export default interface IRoom {
   description?: string;
   createdAt: Date;
   index?: number;
+  notification?: number;
 }

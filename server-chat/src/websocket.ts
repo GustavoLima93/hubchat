@@ -26,6 +26,7 @@ io.on('connection', (client) => {
 
   client.on('SendMessagesRoom', (message: IRoomDialog) => {
     client.broadcast.to(message.roomId).emit('ReceivedMessagesRoom', message);
+    client.broadcast.emit('NotificationMessageRoom', message);
   });
 
   client.on('CreatedRoom', (room) => {

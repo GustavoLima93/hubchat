@@ -65,7 +65,6 @@ export class ChatDialogComponent implements OnInit {
   }
 
   connectRoom(room: IRoom) {
-    console.log('chegando !!')
     if (this.roomSelected) {
       this.chatService.leaveRoom(this.roomSelected._id!);
     }

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'angular-toastify';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import IRoom from '../../interfaces/IRoom';
+import { IRoomDialog } from '../../interfaces/IRoomDialog';
 import { ChatService } from '../../services/chat.service';
 
 @Component({
@@ -28,6 +29,8 @@ export class ChatRoomsComponent implements OnInit {
 
   public spinnerButton = false;
 
+  public selectRoom: IRoom;
+
   get name() {
     return this.formRoom.controls['name'];
   }
@@ -42,6 +45,7 @@ export class ChatRoomsComponent implements OnInit {
   ngOnInit(): void {
     this.initFormRoom();
     this.observeNewRoomSocket();
+    this.observeNotificationMessageRoom();
     this.getRooms();
   }
 
@@ -59,6 +63,24 @@ export class ChatRoomsComponent implements OnInit {
         requestAnimationFrame(() => {
           this.viewport.scrollTo({ bottom: 0, behavior: 'smooth' })
         });
+      });
+  }
+
+  observeNotificationMessageRoom() {
+    this.chatService.receivedNotificationRoom()
+      .subscribe((message: IRoomDialog) => {
+        const index = this.rooms.findIndex(room => room._id === message.roomId);
+
+        if((this.selectRoom && this.selectRoom._id ===  message.roomId) || index === -1){
+          return;
+        }
+
+        if(this.rooms[index]?.notification) {
+          this.rooms[index].notification! += 1;
+        } else {
+          this.rooms[index].notification = 1;
+        }
+
       });
   }
 
@@ -105,7 +127,8 @@ export class ChatRoomsComponent implements OnInit {
   }
 
   selectChat(item: IRoom, index: number) {
-    console.log(item)
+    this.selectRoom = { ...item, index };
+    this.rooms[index].notification = 0;
     this.chatService.nextChatSelected = { ...item, index };
   }
 
