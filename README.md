@@ -31,8 +31,16 @@ Para executar o projeto caso não tenha docker:
 
 ## Documentação  
 
-Api server-chat foi documentada utilizando o swagger. Após executar o server-chat a mesma pode ser acessada através do link `http://localhost:3333/api-docs/`  
+Api server-chat foi documentada utilizando o swagger. Após executar o server-chat a mesma pode ser acessada através do link `http://localhost:3333/api-docs/` ou   [Heroku](https://hubchat-test.herokuapp.com/api-docs/) 
+
+## Projeto online no heroku &&  netlify  
+
+Projeto foi hospedado no heroku e no netlify, porem nao foi configurado o TZ então pode ocorrer algumas divergencias de timezone -3 horas  
+- [Heroku](https://hubchat-test.herokuapp.com/api-docs/)  
+- [Netlify](https://hublab-chat.netlify.app/#/chat/login)  
+
+
 
 ## Duvidas ou Sugestões  
 
-[email](mailto:gustavo93.lima@gmail.com)  
+[Email](mailto:gustavo93.lima@gmail.com)  
