@@ -18,12 +18,12 @@ export class LoginSigninService {
   ) { }
 
 
-  signinUser(user: IUser): Observable<void> {
-    return this.http.post<void>(`${this.BASE_URL}/user`, user).pipe(take(1));
+  signinUser({ email, password, name }: IUser): Observable<void> {
+    return this.http.post<void>(`${this.BASE_URL}/user`, { email, password, name }).pipe(take(1));
   }
 
-  loginUser(authForm: IAuthForm): Observable<IAuthFormResponse> {
-    return this.http.post<IAuthFormResponse>(`${this.BASE_URL}/session`, authForm).pipe(take(1));
+  loginUser({ email, password }: IAuthForm): Observable<IAuthFormResponse> {
+    return this.http.post<IAuthFormResponse>(`${this.BASE_URL}/session`, { email, password }).pipe(take(1));
   }
 
 

@@ -1,27 +1,38 @@
-# FrontChat
+# HUBHCAT  
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
+- Projeto criado para code test na empresa Hublab.  
 
-## Development server
+## Tecnologias  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Node Js  
+- Express  
+- Socket IO  
+- Openapi 3 || Swagger  
+- Angular  
+- MongoDB
 
-## Code scaffolding
+## Execução (nécessario ter o NodeJs@16.10.0 instalado ou Docker)  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para executar o projeto caso tenha o docker e o docker compose instalados:  
+- Baixe o repositório  
+- Acesse a pasta server-chat e execute o comando `docker compose up || docker-compose up -d`  
+- Acesse a pasta front-chat e execute o comando `docker compose up || docker-compose up -d`  
+- Acessar o link `http://localhost:4400`  
 
-## Build
+Para executar o projeto caso não tenha docker:
+- Baixe o repositório  
+- Acesse a pasta server-chat e execute o comando `npm install`  
+- Na raiz do projeto cri um arquivo .env conforme o arquivo .env.example  
+- Preencha a uri da sua base mongoDB na variável MONGO_URL  
+- Preencha um password quolquer na variável TOKEN
+- execute o comando `npm run dev`  
+- Acesse a pasta front-chat e execute o comando `npm run start`   
+- Acessar o link `http://localhost:4200`  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Documentação  
 
-## Running unit tests
+Api server-chat foi documentada utilizando o swagger. Após executar o server-chat a mesma pode ser acessada através do link `http://localhost:3333/api-docs/`  
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Duvidas ou Sugestões  
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[email](mailto:gustavo93.lima@gmail.com)  

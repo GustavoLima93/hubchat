@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: frontchat
+    restart: always
+    ports:
+      - 4400:80
+    volumes:
+      - .:/usr/local/app
