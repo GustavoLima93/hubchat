@@ -35,7 +35,7 @@ Api server-chat foi documentada utilizando o swagger. Após executar o server-ch
 
 ## Projeto online no heroku &&  netlify  
 
-Projeto foi hospedado no heroku e no netlify, porem nao foi configurado o TZ então pode ocorrer algumas divergencias de timezone -3 horas  
+Projeto foi hospedado no heroku e no netlify, porem não foi configurado o TZ então pode ocorrer algumas divergências de timezone -3 horas  
 - [Heroku](https://hubchat-test.herokuapp.com/api-docs/)  
 - [Netlify](https://hublab-chat.netlify.app/#/chat/login)  
 
